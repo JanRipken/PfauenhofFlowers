@@ -1,0 +1,3 @@
+/home/jan/[1] code/cpp/pfauenhof/build/CMakeFiles/pfauenhof.dir
+/home/jan/[1] code/cpp/pfauenhof/build/CMakeFiles/edit_cache.dir
+/home/jan/[1] code/cpp/pfauenhof/build/CMakeFiles/rebuild_cache.dir
