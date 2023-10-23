@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/pfauenhof.dir/src/main.cpp.o CMakeFiles/pfauenhof.dir/src/postgress.cpp.o -o pfauenhof  -lpqxx -lpq 
