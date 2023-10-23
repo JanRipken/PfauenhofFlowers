@@ -7,6 +7,7 @@
 class postgress {
 public:
   std::unique_ptr<pqxx::connection> connectionOpen();
+
   void connectionClose(std::unique_ptr<pqxx::connection> &conn);
 
   void dbExecCommand(std::unique_ptr<pqxx::connection> &conn,
