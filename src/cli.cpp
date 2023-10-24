@@ -63,6 +63,7 @@ void neuerKunde() {
   std::string wohnort;
   std::cin >> wohnort;
 
+  Customer customer(name, straße, hausnummer, postleitzahl, wohnort);
   std::cout << "Wollen sie direkt ein Grab mit anlegen (y/n): ";
   std::string grabanlegen;
   std::cin >> grabanlegen;
@@ -118,10 +119,18 @@ void neuerKunde() {
     };
 
     Grave grave(groesse, grabort, grabTyp, pflanzen);
-    Customer customer(name, straße, hausnummer, postleitzahl, wohnort, grave);
-  } else {
-    Customer customer(name, straße, hausnummer, postleitzahl, wohnort);
+    customer.addGrave(grave);
   }
+
+  std::string sql = "INSERT INTO NEUERKUNDE (name, straße, "
+                    "hausnummer, postleitzahl, wohnort) VALUES ('" +
+                    name + "', '" + straße + "', '" + hausnummer + "', '" +
+                    postleitzahl + "', '" + wohnort + "');";
+
+  postgress myDatabase;
+  std::unique_ptr<pqxx::connection> ptr_dbConnect = myDatabase.connectionOpen();
+  myDatabase.getData(ptr_dbConnect, sql);
+  myDatabase.connectionClose(ptr_dbConnect);
 }
 
 void neueBestellung(Customer customer, Order order) {}

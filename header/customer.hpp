@@ -12,13 +12,7 @@ public:
       : Name(Name), Straße(Straße), Hausnummer(Hausnummer),
         Postleitzahl(Postleitzahl), Wohnort(Wohnort) {}
 
-  Customer(const std::string &Name, const std::string &Straße,
-           const std::string &Hausnummer, const std::string &Postleitzahl,
-           const std::string &Wohnort, const Grave &grab)
-      : Name(Name), Straße(Straße), Hausnummer(Hausnummer),
-        Postleitzahl(Postleitzahl), Wohnort(Wohnort) {
-    graves.push_back(grab);
-  }
+  void addGrave(Grave grave) { graves.push_back(grave); }
 
 private:
   std::string Name;
