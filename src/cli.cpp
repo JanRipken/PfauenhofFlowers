@@ -36,7 +36,7 @@ Jahreszeit stringToJahreszeit(const std::string &str) {
   }
 }
 
-void neuerKunde() {
+void neuerKunde(postgress &myDatabase) {
   std::cout << "==========================================================="
             << std::endl;
   std::cout << "======================== Neuer Kunde ======================"
@@ -127,7 +127,6 @@ void neuerKunde() {
                     name + "', '" + straße + "', '" + hausnummer + "', '" +
                     postleitzahl + "', '" + wohnort + "');";
 
-  postgress myDatabase;
   std::unique_ptr<pqxx::connection> ptr_dbConnect = myDatabase.connectionOpen();
   myDatabase.getData(ptr_dbConnect, sql);
   myDatabase.connectionClose(ptr_dbConnect);
@@ -148,7 +147,7 @@ void verlassen() {
   exit(0);
 }
 
-void mainMENU() {
+void mainMENU(postgress &myDatabase) {
   std::cout << "==========================================================="
             << std::endl;
   std::cout << "======================== Hauptmenü ========================"
@@ -173,7 +172,7 @@ void mainMENU() {
   switch (eingabe) {
 
   case 1:
-    neuerKunde();
+    neuerKunde(myDatabase);
     break;
 
   case 2:
