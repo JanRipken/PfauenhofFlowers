@@ -17,8 +17,8 @@ enum GrabTyp {
 
 class Grave {
 public:
-  Grave(double &Größe, const std::string &Ort, GrabTyp(grabTyp),
-        std::vector<Plant>(plants))
+  Grave(double &Größe, const std::string &Ort, GrabTyp &grabTyp,
+        std::vector<Plant> &plants)
       : Größe(Größe), Ort(Ort), grabTyp(grabTyp), plants(plants) {}
 
 private:

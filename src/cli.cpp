@@ -4,6 +4,38 @@
 #include <iostream>
 #include <string>
 
+GrabTyp stringToGrabTyp(const std::string &str) {
+  if (str == "Einzelgrab") {
+    return Einzelgrab;
+  } else if (str == "Doppelgrab") {
+    return Doppelgrab;
+  } else if (str == "Familiengrab") {
+    return Familiengrab;
+  } else if (str == "Urnengrab") {
+    return Urnengrab;
+  } else if (str == "Gemeinschaftsgrab") {
+    return Gemeinschaftsgrab;
+  } else {
+    return Einzelgrab;
+  }
+}
+
+Jahreszeit stringToJahreszeit(const std::string &str) {
+  if (str == "Ganzjährig") {
+    return ganzjährig;
+  } else if (str == "Frühling") {
+    return Frühling;
+  } else if (str == "Sommer") {
+    return Sommer;
+  } else if (str == "Herbst") {
+    return Herbst;
+  } else if (str == "Winter") {
+    return Winter;
+  } else {
+    return ganzjährig;
+  }
+}
+
 void neuerKunde() {
   std::cout << "==========================================================="
             << std::endl;
@@ -30,6 +62,58 @@ void neuerKunde() {
   std::cout << "Kunden Wohnort: ";
   std::string wohnort;
   std::cin >> wohnort;
+
+  std::cout << "Wollen sie direkt ein Grab mit anlegen (y/n): ";
+  std::string grabanlegen;
+  std::cin >> grabanlegen;
+  if (grabanlegen == "y") {
+    std::cout << "Grab Größe: ";
+    double groesse;
+    std::cin >> groesse;
+
+    std::cout << "Grab Ort: ";
+    std::string grabort;
+    std::cin >> grabort;
+
+    std::string grabTypStr;
+    std::cout << "Geben Sie den Grab Typ ein (Einzelgrab, Doppelgrab, "
+                 "Familiengrab, Urnengrab, Gemeinschaftsgrab): ";
+    std::cin >> grabTypStr;
+
+    GrabTyp grabTyp = stringToGrabTyp(grabTypStr);
+
+    std::cout << "Anzahl der Pflanzen im Grab: ";
+    int anzahlPflanzen;
+    std::cin >> anzahlPflanzen;
+
+    std::vector<Plant> pflanzen;
+    for (int i = 0; i < anzahlPflanzen; i++) {
+      std::cout << "Pflanze " << i + 1 << " Art: ";
+      std::string art;
+      std::cin >> art;
+
+      std::cout
+          << "Pflanze " << i + 1
+          << " Jahreszeit(Ganzjähirg, Frühling, Sommer, Herbst, Winter): ";
+      std::string stringJahreszeit;
+      std::cin >> stringJahreszeit;
+
+      Jahreszeit jahreszeit = stringToJahreszeit(stringJahreszeit);
+
+      std::cout << "Pflanze " << i + 1 << " Dünger: ";
+      std::string duenger;
+      std::cin >> duenger;
+
+      std::cout << "Pflanze " << i + 1 << " Erde: ";
+      std::string erde;
+      std::cin >> erde;
+
+      Plant plant(art, jahreszeit, duenger, erde);
+      pflanzen.push_back(plant);
+    };
+
+    Grave grave(groesse, grabort, grabTyp, pflanzen);
+  }
 
   exit(0);
 }
