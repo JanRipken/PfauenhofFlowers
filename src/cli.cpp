@@ -66,6 +66,9 @@ void neuerKunde() {
   std::cout << "Wollen sie direkt ein Grab mit anlegen (y/n): ";
   std::string grabanlegen;
   std::cin >> grabanlegen;
+  std::cout << "==========================================================="
+            << std::endl;
+
   if (grabanlegen == "y") {
     std::cout << "Grab Größe: ";
     double groesse;
@@ -110,12 +113,15 @@ void neuerKunde() {
 
       Plant plant(art, jahreszeit, duenger, erde);
       pflanzen.push_back(plant);
+      std::cout << "==========================================================="
+                << std::endl;
     };
 
     Grave grave(groesse, grabort, grabTyp, pflanzen);
+    Customer customer(name, straße, hausnummer, postleitzahl, wohnort, grave);
+  } else {
+    Customer customer(name, straße, hausnummer, postleitzahl, wohnort);
   }
-
-  exit(0);
 }
 
 void neueBestellung(Customer customer, Order order) {}

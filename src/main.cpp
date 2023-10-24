@@ -10,7 +10,8 @@ int main(int argc, char *argv[]) {
   // myDatabase.connectionOpen(); std::string sql = "SELECT * FROM COMPANY where
   // ID = 4"; myDatabase.getData(ptr_dbConnect, sql);
   // myDatabase.connectionClose(ptr_dbConnect);
-
-  mainMENU();
+  while (true) {
+    mainMENU();
+  }
   return 0;
 }
