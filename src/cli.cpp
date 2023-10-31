@@ -3,6 +3,7 @@
 #include "../header/helper.hpp"
 #include "../header/postgres.hpp"
 
+#include <cstdlib>
 #include <iostream>
 void cli::neuerKunde(postgress &myDatabase) {
   std::cout << "==========================================================="
@@ -98,9 +99,75 @@ void cli::neuerKunde(postgress &myDatabase) {
   myDatabase.getData(ptr_dbConnect, sql);
   myDatabase.connectionClose(ptr_dbConnect);
 }
-void cli::stammdatenAnpassen() {}
+void cli::stammdatenAnpassen() {
+  system("clear");
+  std::cout << "==========================================================="
+            << std::endl;
+  std::cout << "==================== Stammdaten Anpassen =================="
+            << std::endl;
+  std::cout << "==========================================================="
+            << std::endl;
 
-void cli::neueRechnung() {}
+  std::cout << "===================== Kunden suchen: 1 ===================="
+            << std::endl;
+  std::cout << "===================== Stammdaten eines Kunden ändern: 2 ==="
+            << std::endl;
+  std::cout << "===================== Stammdaten eines Kunden löschen: 3 =="
+            << std::endl;
+  std::cout << "===================== Kunden löschen: 4 ==================="
+            << std::endl;
+  std::cout << "===================== Zurück zum Hauptmenü: 5 ============="
+            << std::endl;
+  std::cout << "==========================================================="
+            << std::endl;
+  int auswahl;
+  std::cin >> auswahl;
+  switch (auswahl) {
+  case 1:
+    break;
+  case 2:
+    break;
+  case 3:
+    break;
+  case 4:
+    break;
+  case 5:
+    MainMenu();
+    break;
+  }
+}
+
+void cli::neueRechnung() {
+  system("clear");
+  std::cout << "==========================================================="
+            << std::endl;
+  std::cout << "======================== Rechnungen ======================="
+            << std::endl;
+  std::cout << "==========================================================="
+            << std::endl;
+
+  std::cout << "======================== Neue Rechnungen: 1 ==============="
+            << std::endl;
+  std::cout << "======================== Zurück zum Hauptmenü: 5 =========="
+            << std::endl;
+  std::cout << "==========================================================="
+            << std::endl;
+  int auswahl;
+  std::cin >> auswahl;
+  switch (auswahl) {
+  case 1:
+    break;
+  case 2:
+    break;
+  case 3:
+    break;
+  case 4:
+    break;
+  case 5:
+    MainMenu();
+    break;
+  }
+}
 
 void cli::abbrechen() {
   std::cout << "==========================================================="
@@ -111,7 +178,11 @@ void cli::abbrechen() {
   exit(0);
 }
 
-void cli::MainMenu(postgress &myDatabase) {
+void cli::MainMenu() {
+  system("clear");
+
+  postgress myDatabase;
+
   std::cout << "==========================================================="
             << std::endl;
   std::cout << "======================== Hauptmenü ========================"
@@ -120,9 +191,9 @@ void cli::MainMenu(postgress &myDatabase) {
             << std::endl;
   std::cout << "===================== Neuer Kunde: 1 ======================"
             << std::endl;
-  std::cout << "===================== Neue Bestellung: 2 =================="
+  std::cout << "===================== Stammdaten ändern: 2 ================"
             << std::endl;
-  std::cout << "===================== Stammdaten ändern: 3 ================"
+  std::cout << "===================== Rechnungen: 3 ======================="
             << std::endl;
   std::cout << "===================== Verlassen: 4 ========================"
             << std::endl;
@@ -140,9 +211,11 @@ void cli::MainMenu(postgress &myDatabase) {
     break;
 
   case 2:
+    stammdatenAnpassen();
     break;
 
   case 3:
+    neueRechnung();
     break;
 
   case 4:

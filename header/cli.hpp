@@ -4,7 +4,7 @@
 #include "postgres.hpp"
 class cli {
 public:
-  void MainMenu(postgress &myDatabase);
+  void MainMenu();
 
 private:
   void neuerKunde(postgress &myDatabase);

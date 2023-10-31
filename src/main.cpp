@@ -5,11 +5,10 @@
 
 int main(int argc, char *argv[]) {
 
-  postgress myDatabase;
   cli mainCLI;
 
   while (true) {
-    mainCLI.MainMenu(myDatabase);
+    mainCLI.MainMenu();
   }
   return 0;
 }
