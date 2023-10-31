@@ -9,6 +9,8 @@ set(CMAKE_CXX_STANDARD 17)
 # Define the source files
 set(SOURCES
     src/main.cpp
+    src/helper.cpp
+    src/cli.cpp
     src/postgress.cpp
 )
 
@@ -22,7 +24,6 @@ add_executable(pfauenhof ${SOURCES})
 target_link_libraries(pfauenhof
     -lpqxx
     -lpq
-    # Other libraries (if needed)
 )
 
 # Set the output directory for the executable
