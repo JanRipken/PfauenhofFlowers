@@ -10,8 +10,6 @@ sudo systemctl status postgresql
 
 ```bash
 git clone https://github.com/JanRipken/PfauenhofFlowers.git
-cd PfauenhofFlowers/build
-cmake ..
-make
-./pfauenhof
+chmod +x build.sh
+./build.sh
 ```
