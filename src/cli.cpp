@@ -98,6 +98,12 @@ void cli::neuerKunde(postgress &myDatabase) {
   std::unique_ptr<pqxx::connection> ptr_dbConnect = myDatabase.connectionOpen();
   myDatabase.getData(ptr_dbConnect, sql);
   myDatabase.connectionClose(ptr_dbConnect);
+
+  std::cout
+      << "==================== Kunde Erfolgreich Angelegt ================="
+      << std::endl;
+  std::cout << "Drücke Enter, um fortzufahren... ";
+  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 void cli::stammdatenAnpassen() {
   system("clear");
