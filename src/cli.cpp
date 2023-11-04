@@ -101,7 +101,6 @@ void cli::neuerKunde(postgress &myDatabase) {
     customer.addGrave(grave);
   }
 
-  // todo: anpassen
   std::string sql = myDatabase.CustomerSQLString(customer);
 
   std::unique_ptr<pqxx::connection> ptr_dbConnect = myDatabase.connectionOpen();
