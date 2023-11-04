@@ -1,8 +1,10 @@
 #ifndef DATABASE_HPP
 #define DATABASE_HPP
 
+#include "customer.hpp"
 #include <algorithm>
 #include <pqxx/pqxx>
+#include <string>
 
 class postgress {
 public:
@@ -14,6 +16,8 @@ public:
                      std::string string_sql);
 
   void getData(std::unique_ptr<pqxx::connection> &conn, std::string string_sql);
+
+  std::string CustomerSQLString(Customer &customer);
 
 private:
   std::string dbName = "pfauenhof";

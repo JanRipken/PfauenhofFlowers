@@ -17,9 +17,13 @@ void cli::neuerKunde(postgress &myDatabase) {
   int kundenid;
   std::cin >> kundenid;
 
-  std::cout << "Kunden Name: ";
-  std::string name;
-  std::cin >> name;
+  std::cout << "Kunden Vorname: ";
+  std::string vorname;
+  std::cin >> vorname;
+
+  std::cout << "Kunden Nachname: ";
+  std::string nachname;
+  std::cin >> nachname;
 
   std::cout << "Kunden Straße: ";
   std::string straße;
@@ -37,7 +41,8 @@ void cli::neuerKunde(postgress &myDatabase) {
   std::string wohnort;
   std::cin >> wohnort;
 
-  Customer customer(kundenid, name, straße, hausnummer, postleitzahl, wohnort);
+  Customer customer(kundenid, vorname, nachname, straße, hausnummer,
+                    postleitzahl, wohnort);
   std::cout << "Wollen sie direkt ein Grab mit anlegen (y/n): ";
   std::string grabanlegen;
   std::cin >> grabanlegen;
@@ -97,10 +102,7 @@ void cli::neuerKunde(postgress &myDatabase) {
   }
 
   // todo: anpassen
-  std::string sql = "INSERT INTO NEUERKUNDE (name, straße, "
-                    "hausnummer, postleitzahl, wohnort) VALUES ('" +
-                    name + "', '" + straße + "', '" + hausnummer + "', '" +
-                    postleitzahl + "', '" + wohnort + "');";
+  std::string sql = myDatabase.CustomerSQLString(customer);
 
   std::unique_ptr<pqxx::connection> ptr_dbConnect = myDatabase.connectionOpen();
   myDatabase.getData(ptr_dbConnect, sql);

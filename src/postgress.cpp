@@ -1,5 +1,7 @@
+#include "../header/customer.hpp"
 #include "../header/postgres.hpp"
 #include <iostream>
+#include <string>
 
 std::unique_ptr<pqxx::connection> postgress::connectionOpen() {
   try {
@@ -50,4 +52,15 @@ void postgress::getData(std::unique_ptr<pqxx::connection> &conn,
     }
     std::cout << std::endl;
   }
+}
+
+std::string postgress::CustomerSQLString(Customer &customer) {
+  std::string sql =
+      "INSERT INTO KUNDEN (KundenID, Vorname, Nachname , Straße, "
+      "Hausnummer, Postleitzahl, Wohnort) VALUES ('" +
+      std::to_string(customer.getKundenID()) + "', '" + customer.getVorname() +
+      "', '" + customer.getNachname() + "', '" + customer.getStrasse() +
+      "', '" + customer.getHausnummer() + "', '" + customer.getPostleitzahl() +
+      "', '" + customer.getWohnort() + "');";
+  return sql;
 }
