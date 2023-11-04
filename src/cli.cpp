@@ -12,6 +12,11 @@ void cli::neuerKunde(postgress &myDatabase) {
             << std::endl;
   std::cout << "==========================================================="
             << std::endl;
+
+  std::cout << "Kunden ID: ";
+  int kundenid;
+  std::cin >> kundenid;
+
   std::cout << "Kunden Name: ";
   std::string name;
   std::cin >> name;
@@ -32,7 +37,7 @@ void cli::neuerKunde(postgress &myDatabase) {
   std::string wohnort;
   std::cin >> wohnort;
 
-  Customer customer(name, straße, hausnummer, postleitzahl, wohnort);
+  Customer customer(kundenid, name, straße, hausnummer, postleitzahl, wohnort);
   std::cout << "Wollen sie direkt ein Grab mit anlegen (y/n): ";
   std::string grabanlegen;
   std::cin >> grabanlegen;
@@ -90,6 +95,8 @@ void cli::neuerKunde(postgress &myDatabase) {
     Grave grave(groesse, grabort, grabTyp, pflanzen);
     customer.addGrave(grave);
   }
+
+  // todo: anpassen
   std::string sql = "INSERT INTO NEUERKUNDE (name, straße, "
                     "hausnummer, postleitzahl, wohnort) VALUES ('" +
                     name + "', '" + straße + "', '" + hausnummer + "', '" +

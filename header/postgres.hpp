@@ -16,7 +16,7 @@ public:
   void getData(std::unique_ptr<pqxx::connection> &conn, std::string string_sql);
 
 private:
-  std::string dbName = "postgres";
+  std::string dbName = "pfauenhof";
   std::string dbBenutzer = "postgres";
   std::string dbPassword = "postgres";
   std::string dbHostAddresse = "127.0.0.1";
